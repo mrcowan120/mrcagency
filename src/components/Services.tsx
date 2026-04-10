@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useReveal } from "@/hooks/useReveal";
 
 const services = [
   {
     number: "01",
+    slug: "content-production",
     title: "Content Production\n& Content Engines",
     description:
       "We design and execute high-output content systems — short-form video, UGC frameworks, creative direction, and editing pipelines. Not just making content. Building machines that produce it at scale.",
@@ -13,6 +15,7 @@ const services = [
   },
   {
     number: "02",
+    slug: "influencer-programs",
     title: "Influencer &\nCreator Programs",
     description:
       "End-to-end creator ecosystems — sourcing, outreach, deal structuring, affiliate programs, and long-term ambassador partnerships. We build creator infrastructure, not just influencer posts.",
@@ -21,6 +24,7 @@ const services = [
   },
   {
     number: "03",
+    slug: "brand-strategy",
     title: "Brand Strategy\n& Storytelling",
     description:
       "Messaging architecture, persona-driven storytelling, and social-first brand voice. We build the narrative foundation that makes everything else work.",
@@ -29,6 +33,7 @@ const services = [
   },
   {
     number: "04",
+    slug: "social-media-management",
     title: "Social Media\nManagement & Growth",
     description:
       "Content calendars, posting strategy, community management, and platform-native growth tactics across TikTok, Instagram, and YouTube.",
@@ -37,6 +42,7 @@ const services = [
   },
   {
     number: "05",
+    slug: "performance-marketing",
     title: "Performance &\nConversion Strategy",
     description:
       "Paid + organic alignment, conversion scripting, funnel integration, and retention strategy. The goal isn't views — it's revenue per piece of content.",
@@ -45,6 +51,7 @@ const services = [
   },
   {
     number: "06",
+    slug: "campaigns-events",
     title: "Campaigns,\nActivations & Events",
     description:
       "Event activations, sweepstakes, sponsorship integrations, and high-concept campaign execution. From food festivals to viral stunts — we make brands show up.",
@@ -77,9 +84,10 @@ export default function Services() {
         {/* Bento grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => (
-            <div
+            <Link
               key={service.number}
-              className={`reveal group relative p-8 md:p-10 rounded-2xl transition-all duration-500 hover-lift ${
+              href={`/services/${service.slug}`}
+              className={`reveal group relative p-8 md:p-10 rounded-2xl transition-all duration-500 hover-lift block ${
                 service.featured
                   ? `${service.color} text-white`
                   : "bg-white border border-[#E8E4DE] hover:border-[#E85D3A]/30"
@@ -103,8 +111,19 @@ export default function Services() {
               }`}>
                 {service.description}
               </p>
-            </div>
+            </Link>
           ))}
+        </div>
+
+        {/* View all services link */}
+        <div className="mt-10 text-center">
+          <Link
+            href="/services"
+            className="text-[14px] font-semibold text-[#E85D3A] hover:text-[#D14E2D] transition-colors duration-300 inline-flex items-center gap-2"
+          >
+            View all services
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>

@@ -31,12 +31,14 @@ export default function ClientLogos() {
 
   return (
     <section className="py-10 border-y border-[#E8E4DE] overflow-hidden bg-[#F0EDE8]/50">
-      <div className="flex items-center animate-marquee whitespace-nowrap">
+      <div className="flex items-center animate-marquee whitespace-nowrap h-10 md:h-12">
         {doubled.map((client, i) => (
           <img
             key={`${client.name}-${i}`}
             src={client.logo}
             alt={client.name}
+            width={120}
+            height={40}
             className="mx-10 md:mx-14 h-8 md:h-10 w-auto object-contain select-none opacity-50 hover:opacity-80 transition-opacity duration-300"
             style={{ filter: "brightness(0)" }}
             draggable={false}

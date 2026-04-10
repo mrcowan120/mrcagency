@@ -1,9 +1,12 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useReveal } from "@/hooks/useReveal";
 
 const projects = [
   {
+    slug: "hexclad-holiday-dinner",
     title: "HexClad — Creator Holiday Dinner",
     category: "Event Activation",
     description:
@@ -13,6 +16,7 @@ const projects = [
     objectPosition: "center 40%",
   },
   {
+    slug: "bloomhouse-content-engine",
     title: "Bloomhouse — The Little Moments",
     category: "Content Engine",
     description:
@@ -22,6 +26,7 @@ const projects = [
     objectPosition: "center 20%",
   },
   {
+    slug: "campo-grande-dtc-growth",
     title: "Campo Grande — DTC Growth",
     category: "Performance & Growth",
     description:
@@ -31,6 +36,7 @@ const projects = [
     objectPosition: "center 60%",
   },
   {
+    slug: "typhur-launch",
     title: "Typhur — Launch to Scale",
     category: "Full-Stack Growth",
     description:
@@ -65,18 +71,22 @@ export default function Work() {
         {/* Project grid — asymmetric bento layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {projects.map((project, i) => (
-            <div
+            <Link
               key={project.title}
-              className="reveal group relative rounded-2xl overflow-hidden cursor-pointer"
+              href={`/work/${project.slug}`}
+              className="reveal group relative rounded-2xl overflow-hidden cursor-pointer block"
               style={{ transitionDelay: `${(i % 2) * 100}ms` }}
             >
               {/* Image background */}
               <div className="aspect-[16/10] relative overflow-hidden transition-transform duration-700 group-hover:scale-[1.02]">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                   style={{ objectPosition: project.objectPosition }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={i < 2}
                 />
 
                 {/* Dark overlay for text legibility */}
@@ -114,8 +124,19 @@ export default function Work() {
                   {project.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
+        </div>
+
+        {/* View all work link */}
+        <div className="mt-10 text-center">
+          <Link
+            href="/work"
+            className="text-[14px] font-semibold text-[#E85D3A] hover:text-[#D14E2D] transition-colors duration-300 inline-flex items-center gap-2"
+          >
+            View all work
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>

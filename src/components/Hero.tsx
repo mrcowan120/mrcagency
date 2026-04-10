@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useReveal } from "@/hooks/useReveal";
 
 export default function Hero() {
@@ -46,18 +47,18 @@ export default function Hero() {
             All under one roof — built by operators, not account managers.
           </p>
           <div className="flex items-center gap-4 shrink-0">
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="text-[15px] font-semibold text-white bg-[#E85D3A] px-8 py-3.5 rounded-full hover:bg-[#D14E2D] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(232,93,58,0.3)]"
             >
               Start a Project
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/services"
               className="text-[15px] font-semibold text-[#1A2744] border border-[#1A2744]/20 px-8 py-3.5 rounded-full hover:bg-[#1A2744] hover:text-white transition-all duration-300"
             >
               View Work
-            </a>
+            </Link>
           </div>
         </div>
       </div>
